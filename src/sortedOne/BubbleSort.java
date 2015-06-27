@@ -21,7 +21,7 @@ public class BubbleSort {
             ar[i] = ar[i+1];
             ar[i+1] = tmp;
             }
-            if(i == (k-1) && k-- > 0) i=0;
+            if(i == (k-1) && k-- > 0) i = 0;
 
         }
     }
