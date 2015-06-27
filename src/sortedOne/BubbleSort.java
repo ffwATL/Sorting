@@ -5,22 +5,12 @@ import java.util.Arrays;
 
 public class BubbleSort {
 
-    public static void main(String[]args){
-        int[] arr = {};
-        int[] arr1 = {};
-        bubbleSort(arr1);
-        bubbleSortInvert(arr);
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(arr1));
-        System.out.println(Arrays.toString(MergeSort.mergeSort(arr,arr1)));
-
-    }
 
     public static void bubbleSort(int[] ar){
         int k = ar.length - 1;
         for(int i = 0; i < k; i++){
             if(ar[i] > ar[i+1]){
-                swap(ar, i,false);
+                swap(ar, i, false);
             }
             if(i == (k-1) && k-- > 0) i = -1;
         }
@@ -42,7 +32,7 @@ public class BubbleSort {
         int k = 0;
         for(int i = ar.length-1; i > k; i--)  {
             if(ar[i] < ar[i-1]){
-                swap(ar,i,true);
+                swap(ar, i, true);
             }
             if(i == (k+1) && k++ < ar.length-1) i = ar.length;
         }
