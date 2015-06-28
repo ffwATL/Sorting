@@ -7,11 +7,19 @@ public class Test {
     private static int n = 4;
 
     public static void main(String[]args){
-        case1(test);
+      /*  case1(test);
         case2(test);
         case3(x,n);
-        case4(43);
+        case4(43);*/
+        f(1);
 
+    }
+
+    public static void f(int k){
+        if(k<7){
+            f(2*k);
+        }
+        System.out.println(k);
     }
 
     //returned  number of digits//

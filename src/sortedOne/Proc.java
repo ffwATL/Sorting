@@ -34,7 +34,7 @@ public class Proc {
     public static int lastFibonacci(int n){
         if(n <= 0) return 0;
         else if(n == 1) return 1;
-      else  return lastFibonacci(n-1)+lastFibonacci(n-2);
+        else  return lastFibonacci(n-1)+lastFibonacci(n-2);
     }
 
     public static long lastFibonacciNoRecursive(int n){
@@ -52,11 +52,4 @@ public class Proc {
             return value2;
         }
     }
-
-
-
-
-
-
-
 }
