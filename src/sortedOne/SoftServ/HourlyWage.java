@@ -1,7 +1,10 @@
 package sortedOne.SoftServ;
 
 
-public class HourlyWage implements Wage{
+import java.io.Serializable;
+
+public class HourlyWage implements Wage, Serializable{
+
     private double hourlyRate;
 
     public HourlyWage(double hourlyRate){

@@ -4,8 +4,6 @@ package sortedOne.SoftServ;
 import java.io.Serializable;
 
 public class Employee implements Comparable<Employee>, Serializable {
-
-
     private int id;
     private String name;
     private int age;
@@ -14,7 +12,7 @@ public class Employee implements Comparable<Employee>, Serializable {
     public Employee(String name, int age, Wage wage, int id){
         this.name = name;
         this.age = age;
-        this.wage = wage;
+        this.setWage(wage);
         this.id = id;
     }
 
@@ -50,7 +48,6 @@ public class Employee implements Comparable<Employee>, Serializable {
 
      @Override
     public String toString(){
-         String res = "id:"+id+" name: " +name+" avg salary="+avgMonthlySalary();
-         return res;
+         return  "id:"+id+" name: " +name+" avg salary="+avgMonthlySalary();
      }
 }

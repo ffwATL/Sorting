@@ -1,7 +1,9 @@
 package sortedOne.SoftServ;
 
 
-public class FixedWage implements Wage{
+import java.io.Serializable;
+
+public class FixedWage implements Wage, Serializable{
 
     private double fixedMonthlyWage;
 

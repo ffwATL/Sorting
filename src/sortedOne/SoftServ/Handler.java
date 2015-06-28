@@ -1,7 +1,7 @@
 package sortedOne.SoftServ;
 
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +14,9 @@ public class Handler implements Serializable{
     private static final Wage hourlyWage = new HourlyWage(HOURLY_RATE);
     private static final Wage monthlyWage = new FixedWage(MONTHLY_RATE);
 
-    public static void main(String[] args){
+    private static File file = new File("D://askme.sav");
+
+    public static void main(String[] args) throws IOException {
         List<Employee> list = new ArrayList<Employee>();
         list.add(new Employee("Sander",18,new HourlyWage(11),4001));
         list.add(new Employee("John",26,new HourlyWage(13),1002));
@@ -24,6 +26,8 @@ public class Handler implements Serializable{
         System.out.println(list);
         /*infoFromFirst(2,list);*/
         getIdFromLast(3,list);
+       /* saveToFile(list,file);*/
+        System.out.println(loadFromFile(file));
 
     }
 
@@ -45,5 +49,42 @@ public class Handler implements Serializable{
         for(int i = f; i > f-n; i--){
             System.out.println(list.get(i).getId());
         }
+    }
+
+    public static void saveToFile(List<Employee> list, File file) {
+        if(FileFilterExt.accept(file,"sav")){
+            try(OutputStream out = new FileOutputStream(file);
+                ObjectOutputStream obj = new ObjectOutputStream(out)){
+                obj.writeObject(list);
+            }catch(IOException ex){
+                ex.printStackTrace();
+            }
+        } else System.out.println("Wrong file was chosen");
+    }
+
+    public static List<Employee> loadFromFile(File file){
+        if (FileFilterExt.accept(file,"sav")){
+            try (FileInputStream fis = new FileInputStream(file);
+                 ObjectInputStream ois = new ObjectInputStream(fis)){
+                Object  obj = ois.readObject();
+                return (List<Employee>) obj;
+            }catch (FileNotFoundException | ClassNotFoundException  ex){
+                ex.printStackTrace();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
+        } else System.out.println("Wrong file extension!!");
+        return null;
+
+    }
+
+    private static class FileFilterExt {
+
+        public static boolean accept(File file, String extension){
+            if(file.getAbsolutePath().endsWith(extension)) return true;
+            else return false;
+        }
+
+
     }
 }
